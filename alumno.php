@@ -2,9 +2,18 @@
     include("conexion.php"); //Incluye el archivo o da acceso a el.
     $conexionBD = conectar(); //invoca la conexion
 
+    $nota1 = ""; 
+    $nota2 = "";
+    $nota3 = "";
+
     $sql = "SELECT id, nombre, correo, nota1, nota2, nota3 FROM `empleados`"; //Creamos una variable que almacena el query requerido para la base de datos
     $query = mysqli_query($conexionBD,$sql); //Ejecuta el query
     $row= mysqli_fetch_array($query);
+
+    $nota1 = $row["nota1"]; 
+    $nota2 = $row["nota2"];
+    $nota3 = $row["nota3"];
+    $notaFinal = ($nota1 + $nota2 + $nota3) / 3;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +54,7 @@
                                 <th class="text-center"> <?php echo $row['nota1'] ?> </th>   
                                 <th class="text-center"> <?php echo $row['nota2'] ?> </th>   
                                 <th class="text-center"> <?php echo $row['nota3'] ?> </th>   
-                                <th class="text-center"> <?php echo $row[] ?> </th>   
+                                <th class="text-center"> <?php echo round(($row['nota1'] + $row['nota2'] + $row['nota3'])/3, 1) ?> </th>   
                                 <th><a href="delete.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">Eliminar</a></th>                                
                             </tr>
 

@@ -18,28 +18,44 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label class="mb-1">Nombre estudiante:</label>
-                            <input type="text" class="form-control mb-3" name="nombre" placeholder="Pepito perez">
+                            <input type="text" class="form-control mb-3" id="nombre" name="nombre" placeholder="Pepito perez">
                         </div>
                         <div class="col-md-6">
                             <label class="mb-1">Nota 1:</label>
-                            <input type="number" class="form-control mb-3" name="nota1" >
+                            <input type="number" max="5.0" min="1.0" step="0.1" class="form-control mb-3" id="nota1" name="nota1">
                         </div>
                         <div class="col-md-6">
                             <label class="mb-1">Nota 2:</label>
-                            <input type="number" class="form-control mb-3" name="nota2">
+                            <input type="number" max="5.0" min="1.0" step="0.1" class="form-control mb-3" id="nota2" name="nota2">
                         </div>
                         <div class="col-md-6">
                             <label class="mb-1">Nota 3:</label>
-                            <input type="number" class="form-control mb-3" name="nota3" >
+                            <input type="number" max="5.0" min="1.0" step="0.1" class="form-control mb-3" id="nota3" name="nota3">
                         </div>
 
                         <a></a>
-                    </div>
-                        <input type="submit" class="btn btn-success">
+                    </div>                    
+                        <input type="submit" class="btn btn-success" onclick="notEmpty()">
                 </form>
-            
         </div>
     </div>
 
 </body>
 </html>
+
+<script>
+        const a = document.getElementById('nombre');
+        const b = document.getElementById('nota1');
+        const c = document.getElementById('nota2');
+        const d = document.getElementById('nota3');
+        function notEmpty(){
+            if (a.value.length<=0 || b.value.length<=0 || c.value.length<=0 || d.value.length<=0)  {
+                
+                alert('Pendiente de los campos');
+                alert(`${a.value} ,${b.value},${c.value},${d.value}`);
+                event.preventDefault();
+                return;
+            }
+            event.currentTarget.submit();
+        }
+</script>
